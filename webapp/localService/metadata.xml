@@ -1,0 +1,131 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZMM_COSTCHANGE_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="Result" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MSG1"/>
+                </Key>
+                <Property Name="MSG1" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MSG2" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="dynTileInfo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="title"/>
+                </Key>
+                <Property Name="icon" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="info" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="infoState" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="number" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="numberDigits" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="numberFactor" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="numberState" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="numberUnit" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="stateArrow" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="subtitle" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="targetParams" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Text, 40 Characters Long" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CostHdr" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiId"/>
+                </Key>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiText" Type="Edm.String" Nullable="false" MaxLength="120" sap:label="Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCd" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCt" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Creation Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiAagent" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Agent" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchasing Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LifnrDesc" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Complete name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Artype" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Article Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToCostDtlSet" Relationship="ZMM_COSTCHANGE_SRV.CostHdrToCostDtl" FromRole="FromRole_CostHdrToCostDtl" ToRole="ToRole_CostHdrToCostDtl"/>
+                <NavigationProperty Name="ToResult" Relationship="ZMM_COSTCHANGE_SRV.HeaderResult" FromRole="FromRole_HeaderResult" ToRole="ToRole_HeaderResult"/>
+            </EntityType>
+            <EntityType Name="CostDtl" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiId"/>
+                    <PropertyRef Name="Ekorg"/>
+                    <PropertyRef Name="Lifnr"/>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchasing Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Article" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Site" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZentDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZentTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EventId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Event inst. ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Infnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Info Record" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Artype" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Article Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekgrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Purch. Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Effpr" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kbetr" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ra00" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rc00" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ra01" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NEffpr" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NKbetr" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NRa00" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NRc00" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NRa01" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NDatab" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="New Starting Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NDatbi" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="New Ending Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zoption" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Option" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zstatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zcomment" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WerksDesc" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Site Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="HeaderResult" sap:content-version="1">
+                <End Type="ZMM_COSTCHANGE_SRV.CostHdr" Multiplicity="1" Role="FromRole_HeaderResult"/>
+                <End Type="ZMM_COSTCHANGE_SRV.Result" Multiplicity="*" Role="ToRole_HeaderResult"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeaderResult">
+                        <PropertyRef Name="WiId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeaderResult">
+                        <PropertyRef Name="MSG1"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CostHdrToCostDtl" sap:content-version="1">
+                <End Type="ZMM_COSTCHANGE_SRV.CostHdr" Multiplicity="1" Role="FromRole_CostHdrToCostDtl"/>
+                <End Type="ZMM_COSTCHANGE_SRV.CostDtl" Multiplicity="*" Role="ToRole_CostHdrToCostDtl"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CostHdrToCostDtl">
+                        <PropertyRef Name="WiId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CostHdrToCostDtl">
+                        <PropertyRef Name="WiId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMM_COSTCHANGE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ResultSet" EntityType="ZMM_COSTCHANGE_SRV.Result" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="dynTileInfoSet" EntityType="ZMM_COSTCHANGE_SRV.dynTileInfo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CostHdrSet" EntityType="ZMM_COSTCHANGE_SRV.CostHdr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CostDtlSet" EntityType="ZMM_COSTCHANGE_SRV.CostDtl" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeaderResultSet" Association="ZMM_COSTCHANGE_SRV.HeaderResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CostHdrSet" Role="FromRole_HeaderResult"/>
+                    <End EntitySet="ResultSet" Role="ToRole_HeaderResult"/>
+                </AssociationSet>
+                <AssociationSet Name="CostHdrToCostDtlSet" Association="ZMM_COSTCHANGE_SRV.CostHdrToCostDtl" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CostHdrSet" Role="FromRole_CostHdrToCostDtl"/>
+                    <End EntitySet="CostDtlSet" Role="ToRole_CostHdrToCostDtl"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZMM_COSTCHANGE_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZMM_COSTCHANGE_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

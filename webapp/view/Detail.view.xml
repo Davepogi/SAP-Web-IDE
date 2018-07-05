@@ -1,0 +1,124 @@
+<mvc:View xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="costchangeapproval.controller.Detail">
+
+	<Page id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<content>
+			<ObjectHeader id="objectHeader" title="{NameText}">
+				<attributes>
+					<ObjectAttribute text="{path: 'WiCd', type: 'sap.ui.model.type.Date',formatOptions: { style: 'full', strictParsing: true, relative: false }}" id="__attribute1"/>
+					<ObjectAttribute text="{path: 'WiCt', formatter: '.formatter.formatTime'}" id="__attribute2"/>
+				</attributes>				
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+						<content>
+							<f:SimpleForm id="generalInformationForm" class="sapUiForceWidthAuto sapUiResponsiveMargin" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="7" columnsM="7"> 
+								<f:content>
+									<Label id="idLabel1" text="Purchasing Organization"/>
+									<Text id="idText1" text="{Ekorg}"/>
+									<Label id="idLabel3" text="Vendor"/>
+									<Text id="idText3" text="{LifnrDesc}"/>
+									<Label id="idLabel4" text="Article Type"/>
+									<Text id="idText4" text="{Artype}"/>					
+								</f:content>
+							</f:SimpleForm>								
+						</content>
+					</IconTabFilter>
+					<IconTabFilter 
+						id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"
+						visible = "false">
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<Table id="lineItemsList" width="auto" items="{ToCostDtlSet}" updateFinished="onListUpdateFinished" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin" mode="MultiSelect" selectionChange="onSelectionChange">
+				<headerToolbar>
+					<Toolbar id="lineItemsToolbar">
+						<Title id="lineItemsHeader" text="{detailView>/lineItemListTitle}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" id="__column2" width="30%">
+						<Text text="Article/UoM/Site"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" id="__columnGC">
+						<Text text="{viewProperties>/bColumnTitleGC}"/>						
+					</Column>	
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" id="__column4" visible="{viewProperties>/bHideColumnConcess}">
+						<Text text="Latest CommRate%"/>						
+					</Column>						
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" id="__column6" visible="{viewProperties>/bHideColumnOutright}">
+						<Text text="DC on Gross %"/>						
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" id="__column7" visible="{viewProperties>/bHideColumnOutright}">
+						<Text text="DC Amount"/>						
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" id="__column8" visible="{viewProperties>/bHideColumnOutright}">
+						<Text text="DC on Net %"/>						
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" id="__column9">
+						<Text text="Validity"/>						
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Vbox>
+								<Hbox alignContent="SpaceBetween">
+									<ObjectIdentifier id="__identifier2" title="{Maktx}"/>
+									<ObjectIdentifier id="__identifier3" title="({Meins})"/>										
+								</Hbox>
+								<ObjectIdentifier id="__identifierWerks" text="{WerksDesc}"/>	
+								<TextArea id="__area0" value="{path: 'Zcomment', mode: 'TwoWay'}" valueState="{ path : 'Zcomment', formatter : '.formatter.getStateByPropertyValue'}" width="100%" maxLength="80" placeholder="Comment"/>
+							</Vbox>							
+						</cells>
+						<cells>
+							<VBox>
+								<ObjectNumber id="__number1" number="{ path : 'Effpr', formatter : '.formatter.currencyValue'}" unit="PHP" textAlign="Right" emphasized="false"/>	
+								<ObjectNumber id="__number2" number="{ path : 'NEffpr', formatter : '.formatter.currencyValue'}" unit="PHP" textAlign="Right" emphasized="false"/>	
+							</VBox>
+						</cells>
+						<cells>
+							<VBox>
+								<ObjectNumber id="__number1b" number="{ path : 'Kbetr', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+								<ObjectNumber id="__number2b" number="{ path : 'NKbetr', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+							</VBox>
+						</cells>						
+						<cells>
+							<VBox>
+								<ObjectNumber id="__number3" number="{ path : 'Ra01', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+								<ObjectNumber id="__number4" number="{ path : 'NRa01', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+							</VBox>
+						</cells>
+						<cells>
+							<VBox>
+								<ObjectNumber id="__number5" number="{ path : 'Rc00', formatter : '.formatter.currencyValue'}" unit="PHP" textAlign="Right" emphasized="false"/>	
+								<ObjectNumber id="__number6" number="{ path : 'NRc00', formatter : '.formatter.currencyValue'}" unit="PHP" textAlign="Right" emphasized="false"/>	
+							</VBox>
+						</cells>
+						<cells>
+							<VBox>
+								<ObjectNumber id="__number7" number="{ path : 'Ra00', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+								<ObjectNumber id="__number8" number="{ path : 'NRa00', formatter : '.formatter.currencyValue'}" unit="%" textAlign="Right" emphasized="false"/>	
+							</VBox>
+						</cells>							
+						<cells>
+							<VBox>
+								<ObjectIdentifier id="__identifier4" text="{NDatab}"/>
+								<ObjectIdentifier id="__identifier5" text="{NDatbi}"/>
+							</VBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+
+		<footer>
+	    	<OverflowToolbar id="footerToolbar">
+				<ToolbarSpacer id="footerBeginSpacer"/>
+				<Button text="Approve" id="__buttonApprove" press="onPressApprove" type="Emphasized"/>
+			</OverflowToolbar>
+		</footer>			
+
+	</Page>
+
+</mvc:View>
